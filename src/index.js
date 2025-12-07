@@ -47,6 +47,7 @@ class Tourdetails extends React.Component {
     <Tourcard />
     <Tourcard />
     <Tourcard />
+    <Tourcard />
   </div>
 </div>
 
