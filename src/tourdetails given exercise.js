@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 class Tourcard extends React.Component {
   render(){
+
     return(
       <div className="col-lg-4">
   <div className="card rounded-5 shadow ">
