@@ -1,0 +1,84 @@
+import ReactDOM from 'react-dom/client';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+class Menulinks extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            IsLoggedIn: false
+        };
+    }
+    updateLogin = () => {
+        this.setState(
+            { IsLoggedIn: !this.state.IsLoggedIn }
+        )
+    }
+    GuestLinks = () => {
+        if (this.state.IsLoggedIn === false) {
+            return (<>
+                <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">Register</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#" onClick={this.updateLogin}>Login</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">Forgot password</a>
+                </li>
+            </>)
+        }
+    }
+    Userlinks = () => {
+        if(this.state.IsLoggedIn === true){
+  return (<>
+                <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">Cart</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">Checkout</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">Change password</a>
+                </li>
+
+                <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#"
+                        onClick={this.updateLogin}>Logout</a>
+                </li>
+            </>)
+        }
+    }
+    render() {
+        return (<div className="collapse navbar-collapse show" id="navbarBasic">
+            <ul className="navbar-nav me-auto mb-2 mb-xl-0">
+                <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">Shop</a>
+                </li>
+                <this.GuestLinks />
+                <this.Userlinks />
+            </ul>
+
+        </div>)
+    }
+}
+function Menu() {
+    return (<>
+        <nav className="navbar navbar-expand-xl navbar-light bg-light">
+            <div className="container-fluid">
+                <a className="navbar-brand" href="#">conditional render</a>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarBasic" aria-controls="navbarBasic" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon" />
+                </button>
+                {/* use MenuLink class as Tag */}
+                <Menulinks />
+            </div>
+        </nav>
+    </>)
+}
+root.render(<Menu />);
